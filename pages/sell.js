@@ -1,5 +1,3 @@
-const Sell = () => (
-    <p>Ventas</p>
-)
+const Sell = () => <p>Ventas</p>;
 
-export default Sell
+export default Sell;
