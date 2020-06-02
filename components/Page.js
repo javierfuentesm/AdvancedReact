@@ -1,5 +1,5 @@
 import React from "react";
-import styled, {ThemeProvider, injectGlobal} from "styled-components";
+import styled, { ThemeProvider, injectGlobal } from "styled-components";
 import Header from "./Header";
 import Meta from "./Meta";
 import Router from "next/router";
@@ -65,15 +65,15 @@ Router.onRouteChangeError = () => {
   NProgress.done();
 };
 
-const Page = ({children}) => {
+const Page = ({ children }) => {
   return (
-      <ThemeProvider theme={theme}>
-        <StyledPage>
-          <Meta/>
-          <Header/>
-          <Inner>{children}</Inner>
-        </StyledPage>
-      </ThemeProvider>
+    <ThemeProvider theme={theme}>
+      <StyledPage>
+        <Meta />
+        <Header />
+        <Inner>{children}</Inner>
+      </StyledPage>
+    </ThemeProvider>
   );
 };
 
