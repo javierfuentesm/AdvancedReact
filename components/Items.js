@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Query } from "react-apollo";
-import gql from "graphql-tag";
+import { useQuery } from "@apollo/react-hooks";
+import { gql } from "apollo-boost";
+import Form from "./styles/Form";
 import styled from "styled-components";
 import Item from "./Item";
 
@@ -27,26 +29,21 @@ const ItemsList = styled.div`
   margin: 0 auto;
 `;
 
-class Items extends Component {
-  render() {
-    return (
-      <Center>
-        <Query query={ALL_ITEMS_QUERY}>
-          {({ data, loading, error }) => {
-            if (loading) return <p>Loading</p>;
-            if (error) return <p>{`Error: ${error}`}</p>;
-            return (
-              <ItemsList>
-                {data.items.map((item) => (
-                  <Item item={item} key={item.id} />
-                ))}
-              </ItemsList>
-            );
-          }}
-        </Query>
-      </Center>
-    );
-  }
-}
+const Items = () => {
+  const { loading, error, data } = useQuery(ALL_ITEMS_QUERY);
+
+  if (loading) return <p>Loading</p>;
+  if (error) return <p>{`Error: ${error}`}</p>;
+  return (
+    <Center>
+      <ItemsList>
+        {data.items.map((item) => (
+          <Item item={item} key={item.id} />
+        ))}
+      </ItemsList>
+    </Center>
+  );
+};
 
 export default Items;
+export { ALL_ITEMS_QUERY };
