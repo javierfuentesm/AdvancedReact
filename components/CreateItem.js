@@ -30,7 +30,7 @@ const CreateItem = () => {
   const [state, setState] = useState({
     title: "",
     description: "",
-    imageUrl: "",
+    image: "",
     largeImage: "",
     price: 0,
   });
@@ -41,6 +41,25 @@ const CreateItem = () => {
   const handleInput = ({ target: { name, type, value } }) => {
     const val = type === "number" ? parseFloat(value) : value.toString();
     setState({ ...state, [name]: val });
+  };
+  const uploadFile = async ({ target: { files } }) => {
+    const data = new FormData();
+    data.append("file", files[0]);
+    data.append("upload_preset", "sickfits");
+    const res = await fetch(
+      "https://api.cloudinary.com/v1_1/dspeesyci/image/upload",
+      {
+        method: "POST",
+        body: data,
+      }
+    );
+    const file = await res.json();
+    setState({
+      ...state,
+      image: file.secure_url,
+      largeImage: file.eager[0].secure_url,
+    });
+    console.log(file);
   };
 
   return (
@@ -57,6 +76,18 @@ const CreateItem = () => {
     >
       <Error error={error} />
       <fieldset disabled={loading} aria-busy={loading}>
+        <label htmlFor="file">
+          Image
+          <input
+            type="file"
+            id="file"
+            name="file"
+            placeholder="File"
+            required
+            onChange={uploadFile}
+          />
+          {state.image && <img src={state.image} alt="Upload preview" />}
+        </label>
         <label htmlFor="title">
           Title
           <input
@@ -69,6 +100,7 @@ const CreateItem = () => {
             onChange={handleInput}
           />
         </label>
+
         <label htmlFor="title">
           Price
           <input
