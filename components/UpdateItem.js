@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import { useMutation, useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 import Form from "./styles/Form";
-import formatMoney from "../lib/formatMoney";
 import Error from "./ErrorMessage";
-import Router from "next/router";
+
 const SINGLE_ITEM_QUERY = gql`
   query SINGLE_ITEM_QUERY($id: ID!) {
     item(where: { id: $id }) {
@@ -58,10 +57,6 @@ const UpdateItem = (props) => {
             ...state,
           },
         });
-        /*        Router.push({
-          pathname: "/item",
-          query: { id: res.data.updateItem.id },
-        });*/
         console.log(res);
       }}
     >

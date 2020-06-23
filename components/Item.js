@@ -5,7 +5,7 @@ import Title from "./styles/Title";
 import ItemStyles from "./styles/ItemStyles";
 import PriceTag from "./styles/PriceTag";
 import formatMoney from "../lib/formatMoney";
-
+import DeleteItem from "./DeleteItem";
 export default class Item extends Component {
   static propTypes = {
     item: PropTypes.object.isRequired,
@@ -29,10 +29,10 @@ export default class Item extends Component {
               query: { id: item.id },
             }}
           >
-            <a>Edit ✏️</a>
+            <a>✏️Edit</a>
           </Link>
-          <button>Add to Cart</button>
-          <button>Delete</button>
+          <button>🛒 Add to Cart</button>
+          <DeleteItem id={item.id}>☠️ Delete this item</DeleteItem>
         </div>
       </ItemStyles>
     );

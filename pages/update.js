@@ -1,4 +1,4 @@
-import UpdateItem from "../components/Updatetem";
+import UpdateItem from "../components/UpdateItem";
 
 const Update = (props) => (
   <div>
