@@ -11,6 +11,8 @@ const SINGLE_ITEM_QUERY = gql`
       title
       description
       price
+      largeImage
+      image
     }
   }
 `;
@@ -105,4 +107,4 @@ const UpdateItem = (props) => {
 };
 
 export default UpdateItem;
-export { UPDATE_ITEM_MUTATION };
+export { UPDATE_ITEM_MUTATION, SINGLE_ITEM_QUERY };
