@@ -5,6 +5,7 @@ import { gql } from "apollo-boost";
 import Form from "./styles/Form";
 import styled from "styled-components";
 import Item from "./Item";
+import Pagination from "./Pagination";
 
 const ALL_ITEMS_QUERY = gql`
   query ALL_ITEMS_QUERY {
@@ -29,18 +30,20 @@ const ItemsList = styled.div`
   margin: 0 auto;
 `;
 
-const Items = () => {
+const Items = ({ page }) => {
   const { loading, error, data } = useQuery(ALL_ITEMS_QUERY);
 
   if (loading) return <p>Loading</p>;
   if (error) return <p>{`Error: ${error}`}</p>;
   return (
     <Center>
+      <Pagination page={page} />
       <ItemsList>
         {data.items.map((item) => (
           <Item item={item} key={item.id} />
         ))}
       </ItemsList>
+      <Pagination page={page} />
     </Center>
   );
 };
