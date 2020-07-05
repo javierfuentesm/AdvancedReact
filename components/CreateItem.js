@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 import Form from "./styles/Form";
-import formatMoney from "../lib/formatMoney";
 import Error from "./ErrorMessage";
 import Router from "next/router";
 
