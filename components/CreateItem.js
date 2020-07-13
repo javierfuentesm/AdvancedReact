@@ -33,9 +33,7 @@ const CreateItem = () => {
     largeImage: "",
     price: 0,
   });
-  const [createItem, { loading, error, called, data }] = useMutation(
-    CREATE_ITEM_MUTATION
-  );
+  const [createItem, { loading, error }] = useMutation(CREATE_ITEM_MUTATION);
 
   const handleInput = ({ target: { name, type, value } }) => {
     const val = type === "number" ? parseFloat(value) : value.toString();
