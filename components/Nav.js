@@ -2,10 +2,9 @@ import Link from "next/link";
 import NavStyles from "./styles/NavStyles";
 import { useQuery } from "@apollo/react-hooks";
 import { CURRENT_USER_QUERY } from "./User";
-import { perPage } from "../config";
 
 const Nav = () => {
-  const { loading, error, data: { me } = false } = useQuery(CURRENT_USER_QUERY);
+  const { data: { me } = false } = useQuery(CURRENT_USER_QUERY);
   return (
     <NavStyles>
       <Link href="/items">

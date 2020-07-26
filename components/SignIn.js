@@ -36,7 +36,6 @@ const SigIn = () => {
           refetchQueries: [{ query: CURRENT_USER_QUERY }],
           variables: state,
         });
-        console.log(res);
         setState({
           email: "",
           name: "",

@@ -62,7 +62,7 @@ const Signup = () => {
             value={state.email}
             onChange={handleInput}
           />
-        </label>{" "}
+        </label>
         <label htmlFor="name">
           Name
           <input
@@ -72,7 +72,7 @@ const Signup = () => {
             value={state.name}
             onChange={handleInput}
           />
-        </label>{" "}
+        </label>
         <label htmlFor="password">
           Password
           <input
